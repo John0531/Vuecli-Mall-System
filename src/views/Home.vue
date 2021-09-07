@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
-  <button type="button" class="btn">
+  <button type="button" class="btn btn-login">
     <router-link  to="/login" class="login">登入商品列表</router-link>
   </button>
 </template>
@@ -31,7 +31,7 @@ export default {
   .login:hover{
     color: #004280;
   }
-  .btn{
+  .btn-login{
     background-color: #42b983;
   }
 </style>
