@@ -15,5 +15,5 @@ app.config.globalProperties.$filters = {
 }// ?自訂全域屬性
 app.use(VueAxios, axios)
 app.use(router)
-app.component('Loading', Loading)
+app.component('Loading', Loading)// ?使用全域註冊Loading元件
 app.mount('#app')
