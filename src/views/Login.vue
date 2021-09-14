@@ -29,6 +29,11 @@
         </div>
 
         <div class="text-end mt-4">
+          <a href="https://john0531.github.io/YongSheng.github.io/" class="index">
+            <button class="btn btn-lg btn-primary btn-block me-3" type="button">
+              回到首頁
+            </button>
+          </a>
           <button class="btn btn-lg btn-primary btn-block" type="submit">
             登入
           </button>
@@ -68,3 +73,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .index{
+    text-decoration: none;
+    color: black;
+  }
+</style>

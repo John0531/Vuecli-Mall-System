@@ -1,5 +1,5 @@
 <template>
-    <Navbar></Navbar>
+    <BackstageNavbar></BackstageNavbar>
     <div class="container-fluid mt-3 position-relative">
         <ToastMessages></ToastMessages>
         <router-view/>
@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue'
+import BackstageNavbar from '../components/BackstageNavbar.vue'
 import emitter from '../methods/emitter.js'
 import ToastMessages from '../components/ToastMessages.vue'
 
 export default {
   components: {
-    Navbar,
+    BackstageNavbar,
     ToastMessages
   },
   provide () {
