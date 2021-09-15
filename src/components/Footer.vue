@@ -24,7 +24,7 @@
                     <a href="#"><i class="bi bi-bicycle"></i> 飲食諮詢</a>
                     <a href="#"><i class="bi bi-bicycle"></i> 常見問題</a>
                     <a href="#"><i class="bi bi-bicycle"></i> 聯絡我們</a>
-                    <a href="https://john0531.github.io/vuecli-backstage-practice/dist/#/login" class="text-success"><i class="bi bi-bicycle"></i> 賣家商品後台</a>
+                    <a href="https://john0531.github.io/Vuecli-Mall-System/dist/#/login" class="text-success"><i class="bi bi-bicycle"></i> 賣家商品後台</a>
                 </nav>
             </div>
             <div class="footer-item footer-subs">
