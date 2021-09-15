@@ -1,7 +1,4 @@
 <template>
-  <div class="banner">
-    <Navbar></Navbar>
-  </div>
   <div class="wrap">
     <div class="container">
       <div class="group pt-5">
@@ -46,7 +43,7 @@
       </div>
       <div class="row pt-3 content gy-4">
         <div class="card px-0" v-for="(item, key) in filterMenu" :key="key">
-          <a href="#">
+          <a href="#" @click.prevent="seeMore(item.id)">
             <div class="item">
               <img
                 :src="item.imageUrl"
@@ -72,12 +69,9 @@
       </div>
     </div>
   </div>
-  <Footer></Footer>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
-import Footer from '@/components/Footer.vue'
 export default {
   data () {
     return {
@@ -87,10 +81,6 @@ export default {
       judgePrice: '選擇價位高低',
       text: ''
     }
-  },
-  components: {
-    Navbar,
-    Footer
   },
   methods: {
     allFilter () {
@@ -129,6 +119,9 @@ export default {
       this.filterMenu = this.filterMenu.filter((item) => {
         return item.title.match(this.text)
       })
+    },
+    seeMore (id) {
+      this.$router.push(`/mall/item/${id}`)
     }
   },
   watch: {
@@ -160,10 +153,6 @@ export default {
 <style lang="scss" scoped>
 $primary: #f2e2ce;
 $secondary: #b96600;
-.banner {
-  background: url('../assets/images/productbanner.jpg') center center;
-  height: 70vh;
-}
 .wrap {
   background-image: url('../assets/images/作者介紹背景.jpg');
   .container {

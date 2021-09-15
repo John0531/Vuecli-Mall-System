@@ -12,8 +12,18 @@ const routes = [
     component: () => import('../views/Login.vue')
   },
   {
-    path: '/product',
-    component: () => import('../views/Product.vue')
+    path: '/mall',
+    component: () => import('../views/ProductBoard.vue'),
+    children: [
+      {
+        path: 'product',
+        component: () => import('../views/Product.vue')
+      },
+      {
+        path: 'item/:itemId',
+        component: () => import('../views/ProductDetail.vue')
+      }
+    ]
   },
   {
     path: '/dashboard',

@@ -6,7 +6,7 @@
   </nav>
   <div class="container-fluid mt-3 position-relative">
     <ToastMessages></ToastMessages>
-    <router-view />
+    <router-view /> <!-- 子頁面切換的區域 -->
   </div>
 </template>
 
