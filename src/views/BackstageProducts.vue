@@ -37,19 +37,19 @@
     </tr>
   </tbody>
   </table>
-  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
-  <ProductModal ref="productModal"
+  <BackstagePagination :pages="pagination" @emit-pages="getProducts"></BackstagePagination>
+  <BackstageProductModal ref="productModal"
   :product="tempProduct"
-  @update-product="updateProduct"></ProductModal>
+  @update-product="updateProduct"></BackstageProductModal>
   <!-- :product="tempProduct"=> props前內後外(將資料往內層傳) -->
   <!-- @update-product="updateProduct"=> emit前內後外(將資料往外層傳) -->
-  <DelModal :item="tempProduct" ref="delModal" @del-item="delProduct"></DelModal>
+  <BackstageDelModal :item="tempProduct" ref="delModal" @del-item="delProduct"></BackstageDelModal>
 </template>
 
 <script>
-import ProductModal from '@/components/ProductModal.vue'
-import DelModal from '@/components/DelModal.vue'
-import Pagination from '@/components/Pagination.vue'
+import BackstageProductModal from '@/components/BackstageProductModal.vue'
+import BackstageDelModal from '@/components/BackstageDelModal.vue'
+import BackstagePagination from '@/components/BackstagePagination.vue'
 
 export default {
   data () {
@@ -62,9 +62,9 @@ export default {
     }
   },
   components: {
-    ProductModal,
-    DelModal,
-    Pagination
+    BackstageProductModal,
+    BackstageDelModal,
+    BackstagePagination
   },
   inject: ['emitter'], // *使用mitt傳遞資料
   methods: {

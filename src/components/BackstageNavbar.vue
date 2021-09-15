@@ -26,7 +26,7 @@ export default {
   methods: {
     logout () {
       const api = `${process.env.VUE_APP_API}logout`
-      this.$http.post(api, this.user)
+      this.$http.post(api)
         .then((res) => {
           if (res.data.success) {
             this.$router.push('/login')
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .logo{
     width: 200px;
   }

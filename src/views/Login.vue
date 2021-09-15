@@ -29,7 +29,10 @@
         </div>
 
         <div class="text-end mt-4">
-          <a href="https://john0531.github.io/YongSheng.github.io/" class="index">
+          <a
+            href="https://john0531.github.io/YongSheng.github.io/"
+            class="index"
+          >
             <button class="btn btn-lg btn-primary btn-block me-3" type="button">
               回到首頁
             </button>
@@ -58,25 +61,24 @@ export default {
     signIn () {
       const api = `${process.env.VUE_APP_API}admin/signin`
       this.isLoading = true
-      this.$http.post(api, this.user)
-        .then((res) => {
-          this.isLoading = false
-          if (res.data.success) {
-            const token = res.data.token
-            const expired = res.data.expired
-            // console.log(token, expired)
-            document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
-            this.$router.push('/dashboard/products')
-          }
-        })
+      this.$http.post(api, this.user).then(res => {
+        this.isLoading = false
+        if (res.data.success) {
+          const token = res.data.token
+          const expired = res.data.expired
+          // console.log(token, expired)
+          document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
+          this.$router.push('/dashboard/backstageproducts')
+        }
+      })
     }
   }
 }
 </script>
 
-<style lang="scss">
-  .index{
-    text-decoration: none;
-    color: black;
-  }
+<style lang="scss" scoped>
+.index {
+  text-decoration: none;
+  color: black;
+}
 </style>

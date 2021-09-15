@@ -5,6 +5,9 @@ import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
+// ?載入bootstrap的js
+import 'bootstrap/dist/js/bootstrap.bundle.js'
+
 import App from './App.vue'
 import router from './router'
 import { currency } from './methods/filters.js'
