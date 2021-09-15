@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/vuecli-backstage-practice/dist/'
+  publicPath: '/Vuecli-Mall-System/dist/'
 }
