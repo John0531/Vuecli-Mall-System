@@ -100,19 +100,19 @@ export default {
   right: 0;
   top:0;
   .cart-img{
-    width: 7vw;
-    height: 13vh;
-    font-size: 4.5vw;
+    width: 5.5vw;
+    height: 5.5vw;
+    font-size: 3.8vw;
     text-align: center;
     border-radius: 20px 0 0 20px;
     box-shadow: -5px 5px 5px #663701;
   }
   .num{
     position: absolute;
-    right: 0.8vw;
-    top:1vh;
-    width: 30px;
-    height: 30px;
+    right: 0.5vw;
+    top:0.5vh;
+    width: 2vw;
+    height: 2vw;
     border-radius: 50%;
     font-size: 1.5vw;
     text-align: center;
