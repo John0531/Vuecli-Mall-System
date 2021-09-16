@@ -7,6 +7,9 @@
   <button type="button" class="btn btn-login">
     <router-link  to="/login" class="login">登入商品列表</router-link>
   </button>
+  <button type="button" class="btn btn-login">
+    <router-link  to="/mall/product" class="login">商城系統</router-link>
+  </button>
 </template>
 
 <script>

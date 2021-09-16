@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div class="container pt-5">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-primary p-2">
@@ -46,10 +47,10 @@
     </div>
     <h1 class="title pt-5">嚴選食材</h1>
     <div class="row img-group pt-4">
-      <img src="https://images.pexels.com/photos/5774154/pexels-photo-5774154.jpeg?cs=srgb&dl=pexels-becerra-govea-photo-5774154.jpg&fm=jpg" alt="">
-      <img src="https://images.pexels.com/photos/8175335/pexels-photo-8175335.jpeg?cs=srgb&dl=pexels-ron-lach-8175335.jpg&fm=jpg" alt="">
-      <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?cs=srgb&dl=pexels-engin-akyurt-1435904.jpg&fm=jpg" alt="">
-      <img src="https://images.pexels.com/photos/6287300/pexels-photo-6287300.jpeg?cs=srgb&dl=pexels-klaus-nielsen-6287300.jpg&fm=jpg" alt="">
+      <img src="../assets/images/products/食材1.jpg" alt="">
+      <img src="../assets/images/products/食材2.jpg" alt="">
+      <img src="../assets/images/products/食材3.jpg" alt="">
+      <img src="../assets/images/products/食材4.jpg" alt="">
     </div>
     <h1 class="title pt-5">購物須知</h1>
     <div class="row mt-4 notice">
@@ -75,11 +76,13 @@ export default {
   methods: {
   },
   created () {
+    this.isLoading = true
     this.id = this.$route.params.itemId
     const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
     this.axios.get(url).then(res => {
       console.log(res)
       this.item = res.data.product
+      this.isLoading = false
     })
   }
 }
@@ -141,7 +144,6 @@ $secondary: #b96600;
 .notice{
   margin: auto;
   width: 50vw;
-  height: 40vh;
   background-color: $primary;
   opacity: 0.6;
   border-radius: 20px;

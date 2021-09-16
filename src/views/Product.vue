@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="group pt-5">
       <button
@@ -161,8 +162,10 @@ export default {
     }
   },
   created () {
+    this.isLoading = true
     const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
     this.axios.get(url).then(res => {
+      this.isLoading = false
       console.log(res)
       this.menu = res.data.products
       console.log(this.menu)

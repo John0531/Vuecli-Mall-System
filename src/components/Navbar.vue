@@ -1,9 +1,9 @@
 <template>
   <a href="" class="cart">
-      <div class="cart-img bg-secondary text-primary">
-          <i class="bi bi-cart3"></i>
-          <div class="num bg-danger"><p class="text-light">0</p></div>
-      </div>
+    <div class="cart-img bg-secondary text-primary">
+      <i class="bi bi-cart3"></i>
+      <div class="num bg-danger"><p class="text-light">0</p></div>
+    </div>
   </a>
   <nav
     class="navbar navbar-expand-lg navbar-light"
@@ -93,13 +93,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cart{
-  position: absolute;
+.cart {
+  position: fixed;
   opacity: 0.9;
   z-index: 2;
   right: 0;
-  top:0;
-  .cart-img{
+  top: 0;
+  .cart-img {
     width: 5.5vw;
     height: 5.5vw;
     font-size: 3.8vw;
@@ -107,10 +107,10 @@ export default {
     border-radius: 20px 0 0 20px;
     box-shadow: -5px 5px 5px #663701;
   }
-  .num{
+  .num {
     position: absolute;
     right: 0.5vw;
-    top:0.5vh;
+    top: 0.5vh;
     width: 2vw;
     height: 2vw;
     border-radius: 50%;
@@ -119,7 +119,7 @@ export default {
   }
 }
 .navbar {
-  position: absolute;
+  position: fixed;
   z-index: 2;
   border-radius: 0 20px 20px 0;
   opacity: 0.9;
@@ -179,85 +179,93 @@ export default {
 }
 
 @media only screen and (max-width: 1200px) {
-  .link {
-    margin-left: 0.2vw;
-    font-size: 2vw;
-    width: auto;
-    white-space: nowrap;
-  }
-  .d-flex {
-    margin-left: 0vw;
-    width: 20vw;
-    height: 6vh;
-    button {
-      width: 8vw;
-      font-size: 1.2vw;
-      text-align: center;
-      padding: 0.5vh 0.5vw;
-      font-size: 2vh;
+  .navbar {
+    .link {
+      margin-left: 0.2vw;
+      font-size: 2vw;
+      width: auto;
+      white-space: nowrap;
     }
-  }
-  .logo {
-    width: 16vw;
-  }
-  .diet-menu a {
-    font-size: 2vw;
+    .logo {
+      width: 16vw;
+    }
+    .diet-menu {
+      a {
+        font-size: 2vw;
+      }
+    }
+    .d-flex {
+      margin-left: 0vw;
+      width: 20vw;
+      height: 6vh;
+      button {
+        width: 8vw;
+        font-size: 1.2vw;
+        text-align: center;
+        padding: 0.5vh 0.5vw;
+        font-size: 2vh;
+      }
+    }
   }
 }
 
 @media only screen and (max-width: 830px) {
-  .link {
-    margin-left: 2.5vw;
-    font-size: 4vw;
-    width: 6vw;
-    white-space: nowrap;
-  }
-  .navbar-nav {
-    margin-right: 0.5vw;
-  }
-  .d-flex {
-    width: 70vw;
-    margin-left: 1.5vw;
-    height: 6vh;
-    padding-bottom: 1vh;
-    button {
-      width: 12vw;
-      font-size: 2vh;
-      height: 5vh;
-      font-size: 1.2vw;
-      padding: 0.5vh 0.5vw;
+  .navbar {
+    .link {
+      margin-left: 2.5vw;
+      font-size: 4vw;
+      width: 6vw;
+      white-space: nowrap;
     }
-  }
-  .logo {
-    width: 35vw;
-  }
-  .diet-menu {
-    margin-left: 4vw;
-    a {
-      font-size: 3.5vw;
+    .navbar-nav {
+      margin-right: 0.5vw;
+    }
+    .d-flex {
+      width: 70vw;
+      margin-left: 1.5vw;
+      height: 6vh;
+      padding-bottom: 1vh;
+      button {
+        width: 12vw;
+        font-size: 2vh;
+        height: 5vh;
+        font-size: 1.2vw;
+        padding: 0.5vh 0.5vw;
+      }
+    }
+    .logo {
+      width: 35vw;
+    }
+    .diet-menu {
+      margin-left: 4vw;
+      a {
+        font-size: 3.5vw;
+      }
     }
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .d-flex {
-    width: 60vw;
-    height: 6vh;
-    padding-bottom: 1vh;
-    button {
-      width: 12vw;
-      font-size: 0.2vh;
-      height: 5vh;
+  .navbar {
+    .d-flex {
+      width: 60vw;
+      height: 6vh;
+      padding-bottom: 1vh;
+      button {
+        width: 12vw;
+        font-size: 0.2vh;
+        height: 5vh;
+      }
     }
-  }
-  .logo {
-    width: 42vw;
-  }
-  .link {
-    font-size: 6vw;
-  }
-  .diet-menu a {
-    font-size: 5vw;
+    .logo {
+      width: 42vw;
+    }
+    .link {
+      font-size: 6vw;
+    }
+    .diet-menu a {
+      font-size: 5vw;
+    }
   }
 }
 </style>
