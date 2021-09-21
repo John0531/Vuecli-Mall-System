@@ -31,17 +31,18 @@
         <select
           class="form-select form-select-lg mb-3"
           aria-label=".form-select-lg example"
+          v-model.number="productNum"
         >
-          <option selected>請選擇數量</option>
-          <option value="1">1 份</option>
-          <option value="2">2 份</option>
-          <option value="3">3 份</option>
-          <option value="4">4 份</option>
-          <option value="5">5 份</option>
+          <option selected disabled>請選擇數量</option>
+          <option value=1>1 份</option>
+          <option value=2>2 份</option>
+          <option value=3>3 份</option>
+          <option value=4>4 份</option>
+          <option value=5>5 份</option>
         </select>
         <div class="total">
-          <h4>小計 | $NT {{item.price}} 元</h4>
-          <button type="button" class="btn btn-outline-secondary"><i class="bi bi-cart-plus-fill"></i><span class="ms-2">加入購物車</span></button>
+          <h4>小計 | $NT {{item.price*productNum}} 元</h4>
+          <button type="button" class="btn btn-outline-secondary" @click="addCart(item.id)" :class="{ disabled: this.cartLoading === item.id }"><i class="bi bi-cart-plus-fill" :class="{'text-success':cartFinish===item.id}"></i><span class="ms-2" v-if="cartLoading===''">加入購物車</span><span class="ms-2 text-success" v-if="cartFinish===item.id">已加入購物車</span></button>
         </div>
       </div>
     </div>
@@ -70,10 +71,25 @@ export default {
   data () {
     return {
       item: {},
-      id: ''
+      id: '',
+      cartLoading: '',
+      cartFinish: '',
+      productNum: 1
     }
   },
   methods: {
+    addCart (id) {
+      this.cartLoading = id
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      const cart = {
+        product_id: id,
+        qty: this.productNum
+      }
+      this.axios.post(url, { data: cart }).then(res => {
+        this.cartFinish = id
+        console.log(res)
+      })
+    }
   },
   created () {
     this.isLoading = true

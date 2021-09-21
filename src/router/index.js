@@ -22,6 +22,18 @@ const routes = [
       {
         path: 'item/:itemId',
         component: () => import('../views/ProductDetail.vue')
+      },
+      {
+        path: 'cart',
+        component: () => import('../views/ProductCart.vue')
+      },
+      {
+        path: 'order',
+        component: () => import('../views/Order.vue')
+      },
+      {
+        path: 'checkout/:orderId',
+        component: () => import('../views/OrderCheckout.vue')
       }
     ]
   },
@@ -55,7 +67,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
   scrollBehavior (to, from, savedPosition) {
-    if (to.fullPath.match('item')) {
+    if (to.fullPath.match('mall')) {
       return {
         top: 0
       }

@@ -1,10 +1,4 @@
 <template>
-  <a href="" class="cart">
-    <div class="cart-img bg-secondary text-primary">
-      <i class="bi bi-cart3"></i>
-      <div class="num bg-danger"><p class="text-light">0</p></div>
-    </div>
-  </a>
   <nav
     class="navbar navbar-expand-lg navbar-light"
     style="background-color: #f2e2ce;"
@@ -63,7 +57,7 @@
           <li class="nav-item">
             <a
               class="link"
-              href="https://john0531.github.io/vuecli-backstage-practice/dist/#/login"
+              href="https://john0531.github.io/vuecli-backstage-practice/dist/#/login" @click.prevent="ToProduct"
               >商店菜單</a
             >
           </li>
@@ -80,20 +74,60 @@
       </div>
     </div>
   </nav>
+  <a href="" class="cart" @click.prevent="ToCart">
+    <div class="cart-img bg-secondary text-primary">
+      <i class="bi bi-cart3"></i>
+      <div class="num bg-danger"><p class="text-light">{{cartNum}}</p></div>
+    </div>
+  </a>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      cartNum: 0
+      cartNum: 0,
+      cartInfo: {}
     }
+  },
+  methods: {
+    ToCart () {
+      this.$router.push('/mall/cart')
+    },
+    ToProduct () {
+      this.$router.push('/mall/product')
+    },
+    getCart () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.axios.get(url).then(res => {
+        console.log(res.data.data)
+        this.cartInfo = res.data.data
+        this.cartNum = this.cartInfo.carts.length
+        console.log('Num', this.cartNum)
+      })
+    },
+    updateCart (item) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
+      const cart = {
+        product_id: item.product_id,
+        qty: item.qty
+      }
+      this.axios.put(url, { data: cart })
+        .then((res) => {
+          console.log(res)
+          this.getCart()
+        })
+    }
+  },
+  created () {
+    this.getCart()
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .cart {
+  z-index: 10;
   position: fixed;
   opacity: 0.9;
   z-index: 2;
@@ -120,7 +154,7 @@ export default {
 }
 .navbar {
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   border-radius: 0 20px 20px 0;
   opacity: 0.9;
   box-shadow: 5px 5px 10px #8a7256;

@@ -85,9 +85,24 @@
             </h4>
           </div>
           <div class="col-1 p-0">
-            <a href="#" class="btn btn-primary add-cart"
-              ><i class="bi bi-cart-plus-fill"></i
-            ></a>
+            <a
+              href="#"
+              class="btn btn-primary add-cart"
+              @click.prevent="addCart(item.id)"
+              :class="{ disabled: this.cartLoading === item.id }"
+            >
+              <i
+                class="bi bi-cart-plus-fill"
+                v-if="this.cartLoading !== item.id"
+              ></i>
+              <div
+                class="spinner-border"
+                role="status"
+                v-if="this.cartLoading === item.id"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -103,7 +118,8 @@ export default {
       filterMenu: [],
       type: '全部',
       judgePrice: '選擇價位高低',
-      text: ''
+      text: '',
+      cartLoading: ''
     }
   },
   methods: {
@@ -146,6 +162,18 @@ export default {
     },
     seeMore (id) {
       this.$router.push(`/mall/item/${id}`)
+    },
+    addCart (id) {
+      this.cartLoading = id
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      const cart = {
+        product_id: id,
+        qty: 1
+      }
+      this.axios.post(url, { data: cart }).then(res => {
+        this.cartLoading = ''
+        console.log(res)
+      })
     }
   },
   watch: {
@@ -178,86 +206,91 @@ export default {
 <style lang="scss" scoped>
 $primary: #f2e2ce;
 $secondary: #b96600;
-  .group {
-    margin: auto;
-    width: 60vw;
+.group {
+  margin: auto;
+  width: 60vw;
+  display: flex;
+  justify-content: space-evenly;
+  button {
+    width: auto;
+    height: 6vh;
+    border: 3px solid;
+    border-radius: 20px;
+    padding: 0 2vw 0;
+    font-size: 1.4vw;
+    font-weight: 700;
+    &:hover {
+      color: $primary;
+    }
+  }
+  .active {
+    border: none;
+    color: $primary;
+  }
+}
+.search {
+  .inputs {
+    justify-content: space-between;
+  }
+  .input-group {
+    width: 25vw;
+  }
+  .form-select {
+    width: 20vw;
+  }
+}
+.content {
+  justify-content: space-evenly;
+  .card {
+    width: auto;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 2px 2px 5px #573000;
+  }
+  .item {
+    position: relative;
+  }
+  img {
+    width: 20vw;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+  }
+  .img-txt {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.603);
+    top: 0;
     display: flex;
-    justify-content: space-evenly;
-    button {
-      width: auto;
-      height: 6vh;
-      border: 3px solid;
-      border-radius: 20px;
-      padding: 0 2vw 0;
-      font-size: 1.4vw;
-      font-weight: 700;
-      &:hover {
-        color: $primary;
-      }
-    }
-    .active {
-      border: none;
+    justify-content: center;
+    align-items: center;
+    color: $primary;
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.5s;
+  }
+  a:hover .img-txt {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .cart-text {
+    align-items: center;
+    width: 18vw;
+  }
+  .add-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    height: 4vw;
+    font-size: 2vw;
+    color: $secondary;
+    &:hover {
+      background-color: $secondary;
       color: $primary;
     }
   }
-  .search {
-    .inputs {
-      justify-content: space-between;
-    }
-    .input-group {
-      width: 25vw;
-    }
-    .form-select {
-      width: 20vw;
-    }
-  }
-  .content {
-    justify-content: space-evenly;
-    .card {
-      width: auto;
-      border-radius: 20px;
-      border: none;
-      box-shadow: 2px 2px 5px #573000;
-    }
-    .item {
-      position: relative;
-    }
-    img {
-      width: 20vw;
-      height: 40vh;
-      object-fit: cover;
-      border-radius: 20px 20px 0 0;
-    }
-    .img-txt {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.603);
-      top: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $primary;
-      border-radius: 20px 20px 0 0;
-      opacity: 0;
-      transform: scale(0);
-      transition: 0.5s;
-    }
-    a:hover .img-txt {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .cart-text {
-      align-items: center;
-      width: 18vw;
-    }
-    .add-cart {
-      font-size: 2vw;
-      color: $secondary;
-      &:hover {
-        background-color: $secondary;
-        color: $primary;
-      }
-    }
-  }
+}
 </style>
