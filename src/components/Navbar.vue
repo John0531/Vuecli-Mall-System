@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="link active" aria-current="page" href="./index.html"
+            <a class="link active" aria-current="page" href="https://john0531.github.io/YongSheng.github.io/"
               >首頁</a
             >
           </li>
@@ -35,24 +35,24 @@
             >
             <ul class="diet-menu dropdown-menu">
               <li>
-                <a href="./間歇性斷食.html">間歇性斷食</a>
+                <a href="https://john0531.github.io/YongSheng.github.io/fasting.html">間歇性斷食</a>
               </li>
               <li>
-                <a href="./低醣飲食.html">低醣飲食</a>
+                <a href="https://john0531.github.io/YongSheng.github.io/lowsugar.html">低醣飲食</a>
               </li>
               <li>
-                <a href="./生酮飲食.html">生酮飲食</a>
+                <a href="https://john0531.github.io/YongSheng.github.io/ketone.html">生酮飲食</a>
               </li>
               <li>
-                <a href="./碳循環飲食.html">碳循環飲食</a>
+                <a href="https://john0531.github.io/YongSheng.github.io/carboncycle.html">碳循環飲食</a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="link" href="./營養素.html">營養素</a>
+            <a class="link" href="https://john0531.github.io/YongSheng.github.io/nutrients.html">營養素</a>
           </li>
           <li class="nav-item">
-            <a class="link" href="./食譜.html">食譜</a>
+            <a class="link" href="https://john0531.github.io/YongSheng.github.io/recipe.html">食譜</a>
           </li>
           <li class="nav-item">
             <a
