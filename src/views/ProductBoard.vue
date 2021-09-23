@@ -11,11 +11,17 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import emitter from '../methods/emitter.js'
 
 export default {
   components: {
     Navbar,
     Footer
+  },
+  provide () {
+    return {
+      emitter
+    }
   }
 }
 </script>

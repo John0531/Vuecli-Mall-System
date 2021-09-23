@@ -105,22 +105,14 @@ export default {
         this.cartNum = this.cartInfo.carts.length
         console.log('Num', this.cartNum)
       })
-    },
-    updateCart (item) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-      const cart = {
-        product_id: item.product_id,
-        qty: item.qty
-      }
-      this.axios.put(url, { data: cart })
-        .then((res) => {
-          console.log(res)
-          this.getCart()
-        })
     }
   },
+  inject: ['emitter'],
   created () {
     this.getCart()
+    this.emitter.on('sendNavbar', (num) => {
+      this.cartNum = num
+    })
   }
 }
 </script>

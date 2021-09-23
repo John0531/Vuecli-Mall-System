@@ -74,10 +74,21 @@ export default {
       id: '',
       cartLoading: '',
       cartFinish: '',
-      productNum: 1
+      productNum: 1,
+      cartNum: 0
     }
   },
+  inject: ['emitter'],
   methods: {
+    sendCartNum (id) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.axios.get(url).then(res => {
+        console.log('cart', res.data.data.carts.length)
+        this.cartNum = res.data.data.carts.length
+        this.emitter.emit('sendNavbar', this.cartNum)
+        this.cartFinish = id
+      })
+    },
     addCart (id) {
       this.cartLoading = id
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -86,8 +97,8 @@ export default {
         qty: this.productNum
       }
       this.axios.post(url, { data: cart }).then(res => {
-        this.cartFinish = id
         console.log(res)
+        this.sendCartNum(id)
       })
     }
   },

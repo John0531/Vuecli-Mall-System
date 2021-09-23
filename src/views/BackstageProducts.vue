@@ -66,7 +66,7 @@ export default {
     BackstageDelModal,
     BackstagePagination
   },
-  inject: ['emitter'], // *使用mitt傳遞資料
+  inject: ['emitter'], // *使用provide來inject套件mitt傳遞元件資料
   methods: {
     getProducts (page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`

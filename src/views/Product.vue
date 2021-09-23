@@ -119,9 +119,11 @@ export default {
       type: '全部',
       judgePrice: '選擇價位高低',
       text: '',
-      cartLoading: ''
+      cartLoading: '',
+      cartNum: 0
     }
   },
+  inject: ['emitter'],
   methods: {
     allFilter () {
       this.type = '全部'
@@ -163,6 +165,15 @@ export default {
     seeMore (id) {
       this.$router.push(`/mall/item/${id}`)
     },
+    sendCartNum () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.axios.get(url).then(res => {
+        console.log('cart', res.data.data.carts.length)
+        this.cartNum = res.data.data.carts.length
+        this.emitter.emit('sendNavbar', this.cartNum)
+        this.cartLoading = ''
+      })
+    },
     addCart (id) {
       this.cartLoading = id
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -171,8 +182,8 @@ export default {
         qty: 1
       }
       this.axios.post(url, { data: cart }).then(res => {
-        this.cartLoading = ''
         console.log(res)
+        this.sendCartNum()
       })
     }
   },

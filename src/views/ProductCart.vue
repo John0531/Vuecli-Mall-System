@@ -67,9 +67,11 @@ export default {
   data () {
     return {
       cartInfo: {},
-      isLoading: false
+      isLoading: false,
+      cartNum: 0
     }
   },
+  inject: ['emitter'],
   methods: {
     getCart () {
       this.isLoading = true
@@ -77,6 +79,8 @@ export default {
       this.axios.get(url).then(res => {
         console.log(res.data.data)
         this.cartInfo = res.data.data
+        this.cartNum = res.data.data.carts.length
+        this.emitter.emit('sendNavbar', this.cartNum)
         this.isLoading = false
       })
     },

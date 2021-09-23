@@ -118,10 +118,20 @@ export default {
         message: '',
         payment_method: ''
       },
-      orderId: ''
+      orderId: '',
+      cartNum: 0
     }
   },
+  inject: ['emitter'],
   methods: {
+    sendCartNum () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.axios.get(url).then(res => {
+        console.log('cart', res.data.data.carts.length)
+        this.cartNum = res.data.data.carts.length
+        this.emitter.emit('sendNavbar', this.cartNum)
+      })
+    },
     getCart () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -142,6 +152,7 @@ export default {
         .then((res) => {
           console.log(res)
           this.orderId = res.data.orderId
+          this.sendCartNum()
           this.isLoading = false
           this.toCheckout()
         })
