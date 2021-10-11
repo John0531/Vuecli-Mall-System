@@ -41,8 +41,8 @@
   <BackstageProductModal ref="productModal"
   :product="tempProduct"
   @update-product="updateProduct"></BackstageProductModal>
-  <!-- :product="tempProduct"=> props前內後外(將資料往內層傳) -->
-  <!-- @update-product="updateProduct"=> emit前內後外(將資料往外層傳) -->
+  //? :product="tempProduct"=> props前內後外(將資料往內層傳)
+  //? @update-product="updateProduct"=> emit前內後外(將資料往外層傳)
   <BackstageDelModal :item="tempProduct" ref="delModal" @del-item="delProduct"></BackstageDelModal>
 </template>
 
@@ -81,6 +81,7 @@ export default {
           }
         })
     },
+    // ?開啟新增或編輯產品Modal
     openModal (isNew, item) {
       if (isNew) {
         this.tempProduct = {}
